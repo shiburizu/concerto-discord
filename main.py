@@ -47,6 +47,12 @@ class Lobby(db.Model):
             if i.lobby_id == id:
                 return i
         return None
+    
+    def name_by_id(self,id): #this could be faster
+        for i in self.players:
+            if i.lobby_id == id:
+                return i.name
+        return None
 
 class Player(db.Model):
     uid = db.Column(db.Integer, primary_key=True, unique=True) #id in the table
