@@ -92,7 +92,7 @@ def actions():
     if key != DISCORD_KEY:
         return 'BAD'
     if action == 'webhook':
-        threading.Thread(target=update_webhook).start()
+        update_webhook()
         return 'OK'
 
 def update_webhook():
