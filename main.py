@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os,datetime
 import requests
 import json
+import threading
 
 app = Flask(__name__)
 
@@ -91,7 +92,7 @@ def actions():
     if key != DISCORD_KEY:
         return 'BAD'
     if action == 'webhook':
-        update_webhook()
+        threading.Thread(target=update_webhook).start()
         return 'OK'
 
 def update_webhook():
