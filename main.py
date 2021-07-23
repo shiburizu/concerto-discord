@@ -135,6 +135,8 @@ def update_webhook():
 
         lobby.update({'fields': fields})
         embeds.append(lobby)
+        if len(embeds) >= 10:
+            break
 
     data = {
         'content': '**__Open Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n',
