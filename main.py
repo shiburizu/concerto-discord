@@ -113,7 +113,7 @@ def update_webhook():
         else:
             break
 
-    lobbies = purge_old(Lobby.query.filter_by(type = "Public").all())
+    lobbies = purge_old(Lobby.query.filter_by(type = "Public").filter(Lobby.players.any()).all())
     embeds = []
     for l in lobbies:
         # TODO: random lobby colors would be cool and creation timestamps
@@ -145,7 +145,7 @@ def update_webhook():
             break
 
     data = {
-        'content': '**__Open Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n',
+        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n',
         'embeds': embeds 
     }
     if lobbies != []:
@@ -156,8 +156,6 @@ def update_webhook():
         resp = requests.patch(url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
         resp.raise_for_status()
 
-'''
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
 	app.run(host='0.0.0.0', port=port, debug=False)
-'''
