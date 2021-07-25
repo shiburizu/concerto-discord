@@ -1,10 +1,8 @@
-from flask import Flask, request, redirect
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 import os,datetime
 import requests
 import json
-import threading
-
 app = Flask(__name__)
 
 DISCORD_KEY = os.environ['DISCORD_KEY'] #to send requests to the secondary server
@@ -155,7 +153,8 @@ def update_webhook():
         url = a + "/messages/" + b
         resp = requests.patch(url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
         resp.raise_for_status()
-
+'''
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
 	app.run(host='0.0.0.0', port=port, debug=False)
+'''
