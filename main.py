@@ -154,7 +154,7 @@ def update_webhook():
     players = db.session.query(Player).count()
 
     data = {
-        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s playing now.\n',
+        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s playing now.\n' % players,
         'embeds': embeds 
     }
     if lobbies != []:
