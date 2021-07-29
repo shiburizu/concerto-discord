@@ -38,7 +38,6 @@ class Lobby(db.Model):
             self.players.remove(p1)
             db.session.delete(p1)
             db.session.commit()
-            update_webhook()
     
     def validate_id(self,id):
         for i in self.players:
