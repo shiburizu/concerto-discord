@@ -151,7 +151,7 @@ def update_webhook():
 
     #clear private players
     purge_old(Lobby.query.filter_by(type = "Private").all())
-    players = Player.count()
+    players = db.session.query(Player).count()
 
     data = {
         'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s playing now.\n',
