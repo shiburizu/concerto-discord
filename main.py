@@ -149,8 +149,12 @@ def update_webhook():
         if len(embeds) >= 10:
             break
 
+    #clear private players
+    purge_old(Lobby.query.filter_by(type = "Private").all())
+    players = Player.count()
+
     data = {
-        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n',
+        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s playing now.\n',
         'embeds': embeds 
     }
     if lobbies != []:
