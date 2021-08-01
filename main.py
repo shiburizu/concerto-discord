@@ -116,8 +116,8 @@ def update():
         }
         playing = ""
         idle = "" 
+        found_ids = [] 
         for p in l.players:
-            found_ids = [] 
             if p.status == 'playing' and p.lobby_id not in found_ids and p.target not in found_ids and p.ip is not None:
                 playing += p.name + ' vs ' + l.name_by_id(p.target) + '\n'
                 found_ids.append(p.lobby_id)
