@@ -105,7 +105,7 @@ def update():
         else:
             break
 
-    lobbies = purge_old(Lobby.query.filter_by(type = "Public").filter(Lobby.players.any()).all())
+    lobbies = purge_old(Lobby.query.filter_by(type = "Public").filter(Lobby.players.any()).order_by(Lobby.code).all())
     embeds = []
     for l in lobbies:
         # TODO: random lobby colors would be cool and creation timestamps
