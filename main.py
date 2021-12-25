@@ -141,7 +141,7 @@ def update():
     players = db.session.query(Player).count()
 
     data = {
-        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s connected to lobbies.\n' % players,
+        'content': '**__Public Lobbies__**\nLobbies created with Concerto: <https://concerto.shib.live>\n%s connected to lobbies. List updated every 10 minutes.\n' % players,
         'embeds': embeds 
     }
     if lobbies != []:
@@ -153,6 +153,4 @@ def update():
         resp.raise_for_status()
 
 if __name__ == '__main__':
-    while True:
-        update()
-        time.sleep(10)
+    update()
